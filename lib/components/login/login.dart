@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:school_management/theme/colors.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -17,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: HexColor(ColorsDesign['primary']),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(25.0),
@@ -35,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                               print("Pressed");
                             }),
                         SizedBox(height: 10),
-                        Text("Login!", style: TextStyle(fontSize: 28))
+                        Text("Welcome Back!", style: TextStyle(fontSize: 28))
                       ],
                     ),
                     Padding(
@@ -48,22 +50,24 @@ class _LoginPageState extends State<LoginPage> {
                               child: Container(
                                 width: MediaQuery.of(context).size.width > 780
                                     ? MediaQuery.of(context).size.width * 0.3
-                                    : MediaQuery.of(context).size.width * 0.6,
+                                    : MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                      color: HexColor(ColorsDesign['third'])),
                                   controller: myControllerEmail,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                       prefixIcon: Icon(
                                         Icons.email,
-                                        color: Color(0xff6C6CE5),
+                                        color: HexColor(ColorsDesign['third']),
                                       ),
                                       filled: true,
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                         borderSide: BorderSide(
-                                          color: Color(0xff6C6CE5),
+                                          color:
+                                              HexColor(ColorsDesign['third']),
                                           width: 2.0,
                                         ),
                                       ),
@@ -71,14 +75,16 @@ class _LoginPageState extends State<LoginPage> {
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                         borderSide: BorderSide(
-                                          color: Color(0xff6C6CE5),
+                                          color:
+                                              HexColor(ColorsDesign['third']),
                                           width: 2.0,
                                         ),
                                       ),
                                       border: OutlineInputBorder(),
                                       labelText: 'Email',
-                                      labelStyle:
-                                          TextStyle(color: Colors.black)),
+                                      labelStyle: TextStyle(
+                                          color:
+                                              HexColor(ColorsDesign['third']))),
                                   validator: (value) =>
                                       EmailValidator.validate(value)
                                           ? null
@@ -91,33 +97,35 @@ class _LoginPageState extends State<LoginPage> {
                               child: Container(
                                 width: MediaQuery.of(context).size.width > 780
                                     ? MediaQuery.of(context).size.width * 0.3
-                                    : MediaQuery.of(context).size.width * 0.6,
+                                    : MediaQuery.of(context).size.width * 0.7,
                                 child: TextFormField(
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                      color: HexColor(ColorsDesign['third'])),
                                   controller: myControllerPassword,
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     prefixIcon: Icon(
                                       Icons.security,
-                                      color: Color(0xff6C6CE5),
+                                      color: HexColor(ColorsDesign['third']),
                                     ),
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                       borderSide: BorderSide(
-                                        color: Color(0xff6C6CE5),
+                                        color: HexColor(ColorsDesign['third']),
                                         width: 2.0,
                                       ),
                                     ),
                                     enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10.0),
                                       borderSide: BorderSide(
-                                        color: Color(0xff6C6CE5),
+                                        color: HexColor(ColorsDesign['third']),
                                         width: 2.0,
                                       ),
                                     ),
                                     border: OutlineInputBorder(),
                                     labelText: 'Password',
-                                    labelStyle: TextStyle(color: Colors.black),
+                                    labelStyle: TextStyle(
+                                        color: HexColor(ColorsDesign['third'])),
                                   ),
                                   validator: (value) {
                                     if (value.isEmpty) {
@@ -130,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                             )
                           ])),
                     ),
-                    SizedBox(height: 10),
+                    // SizedBox(height: 10),
                     MouseRegion(
                       onEnter: (value) {
                         setState(() {
@@ -144,7 +152,13 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: GestureDetector(
                         onTap: () {
-                          print('login');
+                          if (_formKey.currentState.validate()) {
+                            // Login process
+                          }
+                          // Navigator.pushReplacement(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (_) => BottomNav()));
                         },
                         child: AnimatedContainer(
                           duration: Duration(milliseconds: 275),
@@ -155,13 +169,16 @@ class _LoginPageState extends State<LoginPage> {
                               "Login".toUpperCase(),
                               style: TextStyle(
                                   fontSize: 14.0,
+                                  fontWeight: FontWeight.bold,
                                   color: hovered
-                                      ? Colors.white
-                                      : Color(0xff6C6CE5)),
+                                      ? HexColor(ColorsDesign['fifth'])z
+                                      : HexColor(ColorsDesign['third'])),
                             ),
                           ),
                           decoration: BoxDecoration(
-                              color: hovered ? Color(0xff6C6CE5) : Colors.white,
+                              color: hovered
+                                  ? HexColor(ColorsDesign['third'])
+                                  : HexColor(ColorsDesign['fifth']),
                               borderRadius: BorderRadius.circular(10.0),
                               boxShadow: [
                                 BoxShadow(
@@ -179,9 +196,11 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text("Don't have a account ? ",
-                              style: TextStyle(color: Colors.black87)),
+                              style: TextStyle(
+                                  color: HexColor(ColorsDesign['fourth']))),
                           Text(" Sign up now!",
-                              style: TextStyle(color: Colors.red)),
+                              style: TextStyle(
+                                  color: HexColor(ColorsDesign['third']))),
                         ]),
                   ]),
             ),
