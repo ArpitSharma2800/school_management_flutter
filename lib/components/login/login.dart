@@ -152,9 +152,11 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: GestureDetector(
                         onTap: () {
-                          if (_formKey.currentState.validate()) {
-                            // Login process
-                          }
+                          Navigator.pushNamed(context, '/main/arpit');
+
+                          // if (_formKey.currentState.validate()) {
+                          //   // Login process
+                          // }
                           // Navigator.pushReplacement(
                           //     context,
                           //     MaterialPageRoute(
@@ -171,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                                   fontSize: 14.0,
                                   fontWeight: FontWeight.bold,
                                   color: hovered
-                                      ? HexColor(ColorsDesign['fifth'])z
+                                      ? HexColor(ColorsDesign['fifth'])
                                       : HexColor(ColorsDesign['third'])),
                             ),
                           ),
