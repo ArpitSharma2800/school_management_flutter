@@ -30,17 +30,14 @@ class _SharedFilesItemState extends State<SharedFilesItem> {
         });
       },
       child: Container(
-        height: hovered
-            ? MediaQuery.of(context).size.height * 0.1
-            : MediaQuery.of(context).size.height * 0.1,
+        height: hovered ? 70 : 70,
         // width: hovered ? 200.0 : 195.0,
-
         width: hovered
             ? MediaQuery.of(context).size.width * 0.302
             : MediaQuery.of(context).size.width * 0.3,
         child: AnimatedContainer(
           duration: Duration(milliseconds: 275),
-          margin: EdgeInsets.only(bottom: 10.0, left: 40.0, right: 15.0),
+          margin: EdgeInsets.only(bottom: 10.0, left: 15.0, right: 15.0),
           padding: EdgeInsets.all(10.0),
           decoration: BoxDecoration(
               color: hovered

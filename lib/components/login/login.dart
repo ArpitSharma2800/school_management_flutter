@@ -152,7 +152,8 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, '/main/arpit');
+                          Navigator.pushReplacementNamed(
+                              context, '/main/arpit');
 
                           // if (_formKey.currentState.validate()) {
                           //   // Login process
