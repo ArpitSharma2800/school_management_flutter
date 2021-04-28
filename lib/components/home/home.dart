@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:school_management/components/home/src/schoolCard.dart';
 import 'package:school_management/theme/colors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatefulWidget {
   final String page;
@@ -18,6 +20,13 @@ class _HomeState extends State<Home> {
       backgroundColor: HexColor(ColorsDesign['primary']),
       appBar: AppBar(
         elevation: 0,
+        title: Text(
+          "School Name",
+          style: TextStyle(
+              fontSize: 24.0,
+              fontWeight: FontWeight.bold,
+              color: HexColor(ColorsDesign['third'])),
+        ),
         backgroundColor: HexColor(ColorsDesign['primary']),
         iconTheme:
             IconThemeData(color: HexColor(ColorsDesign['third']), size: 40),
@@ -27,16 +36,51 @@ class _HomeState extends State<Home> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Text(
-                "School Management",
-                style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: HexColor(ColorsDesign['fifth'])),
-              ),
-              decoration: BoxDecoration(
-                color: HexColor(ColorsDesign['third']),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: DrawerHeader(
+                child: Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                          icon: FaIcon(FontAwesomeIcons.user),
+                          iconSize: 20,
+                          color: HexColor(ColorsDesign['fifth']),
+                          onPressed: () {
+                            print("Pressed");
+                          }),
+                      Text(
+                        "Hello, XXYYZZ",
+                        style: TextStyle(
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(ColorsDesign['fifth'])),
+                      ),
+                      Divider(
+                        color: HexColor(ColorsDesign['fifth']),
+                      ),
+                      Text(
+                        "Designation",
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(ColorsDesign['fifth'])),
+                      ),
+                      Text(
+                        "example@eg.com",
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(ColorsDesign['fifth'])),
+                      ),
+                    ],
+                  ),
+                ),
+                decoration: BoxDecoration(
+                  color: HexColor(ColorsDesign['third']),
+                ),
               ),
             ),
             ListTile(
@@ -59,6 +103,22 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
+      ),
+      body: Column(
+        children: [
+          SharedFilesItem(
+            sharedFileName: 'School Bus Fees',
+          ),
+          SharedFilesItem(
+            sharedFileName: 'School Bus Fees',
+          ),
+          SharedFilesItem(
+            sharedFileName: 'School Bus Fees',
+          ),
+          SharedFilesItem(
+            sharedFileName: 'School Bus Fees',
+          ),
+        ],
       ),
     );
   }
