@@ -37,36 +37,40 @@ class _NavBarState extends State<NavBar> {
               });
             },
           ),
+          SizedBox(height: 10),
           NavBarItem(
             icon: Feather.list,
             active: selected[1],
-            name: 'home',
+            name: 'list',
             touched: () {
               setState(() {
                 select(1);
               });
             },
           ),
+          SizedBox(height: 10),
           NavBarItem(
             icon: Feather.folder,
             active: selected[2],
-            name: 'home',
+            name: 'folder',
             touched: () {
               setState(() {
                 select(2);
               });
             },
           ),
+          SizedBox(height: 10),
           NavBarItem(
             icon: Feather.message_square,
             active: selected[3],
-            name: 'home',
+            name: 'message',
             touched: () {
               setState(() {
                 select(3);
               });
             },
           ),
+          SizedBox(height: 10),
           NavBarItem(
             icon: Feather.log_out,
             active: selected[4],

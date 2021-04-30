@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:school_management/theme/colors.dart';
 
 class NavBarItem extends StatefulWidget {
   final IconData icon;
@@ -25,25 +27,32 @@ class _NavBarItemState extends State<NavBarItem> {
           // print(widget.icon);
           widget.touched();
         },
-        splashColor: Colors.white,
-        hoverColor: Colors.white12,
+        splashColor: HexColor(ColorsDesign['secondary']),
+        hoverColor: HexColor(ColorsDesign['secondary']),
         child: Container(
           child: Container(
             height: 60.0,
             width: 200.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   widget.icon,
-                  color: widget.active ? Colors.white : Colors.white54,
-                  size: 19.0,
+                  color: widget.active
+                      ? HexColor(ColorsDesign['secondary'])
+                      : Colors.white54,
+                  size: 24.0,
                 ),
+                SizedBox(height: 10),
                 Text(
                   widget.name,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: widget.active
+                          ? HexColor(ColorsDesign['secondary'])
+                          : Colors.white54,
                       fontSize: 16.0),
                 )
               ],

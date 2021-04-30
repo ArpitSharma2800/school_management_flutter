@@ -5,6 +5,7 @@ import 'package:school_management/components/dashboard/dashboard.dart';
 import 'package:school_management/components/home/src/schoolCard.dart';
 import 'package:school_management/theme/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 const dummy = [
   {'name': "School Bus Fees", 'id': 0},
@@ -45,75 +46,117 @@ class _HomeState extends State<Home> {
       drawer: MediaQuery.of(context).size.width < 850
           ? Drawer(
               elevation: 0,
-              child: ListView(
-                padding: EdgeInsets.zero,
-                children: <Widget>[
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    child: DrawerHeader(
-                      child: Padding(
-                        padding: const EdgeInsets.all(0.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            IconButton(
-                                icon: FaIcon(FontAwesomeIcons.user),
-                                iconSize: 20,
-                                color: HexColor(ColorsDesign['fifth']),
-                                onPressed: () {
-                                  print("Pressed");
-                                }),
-                            Text(
-                              "Hello, XXYYZZ",
-                              style: TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: HexColor(ColorsDesign['fifth'])),
-                            ),
-                            Divider(
-                              color: HexColor(ColorsDesign['fifth']),
-                            ),
-                            Text(
-                              "Designation",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: HexColor(ColorsDesign['fifth'])),
-                            ),
-                            Text(
-                              "example@eg.com",
-                              style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
-                                  color: HexColor(ColorsDesign['fifth'])),
-                            ),
-                          ],
-                        ),
-                      ),
-                      decoration: BoxDecoration(
-                        color: HexColor(ColorsDesign['third']),
-                      ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text('Item 1'),
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  ListTile(
-                    leading: Icon(Icons.logout,
-                        color: HexColor(ColorsDesign['secondary'])),
-                    title: Text('Logout',
+              child: Container(
+                decoration: BoxDecoration(
+                  color: HexColor(ColorsDesign['third']),
+                ),
+                height: MediaQuery.of(context).size.height,
+                child: DrawerHeader(
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(height: 10),
+                      IconButton(
+                          icon: FaIcon(FontAwesomeIcons.user),
+                          iconSize: 20,
+                          color: HexColor(ColorsDesign['fifth']),
+                          onPressed: () {
+                            print("Pressed");
+                          }),
+                      SizedBox(height: 2),
+                      Text(
+                        "Hello, XXYYZZ",
                         style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                        )),
-                    onTap: () {
-                      Navigator.pushNamed(context, '/');
-                    },
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(ColorsDesign['fifth'])),
+                      ),
+                      Divider(
+                        color: HexColor(ColorsDesign['fifth']),
+                      ),
+                      Text(
+                        "Designation",
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(ColorsDesign['fifth'])),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        "example@eg.com",
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: HexColor(ColorsDesign['fifth'])),
+                      ),
+                      SizedBox(height: 30),
+                      ListTile(
+                        leading: Icon(Feather.home,
+                            color: HexColor(ColorsDesign['secondary'])),
+                        title: Text('Home',
+                            style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: HexColor(ColorsDesign['secondary']))),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      ListTile(
+                        leading: Icon(Feather.list,
+                            color: HexColor(ColorsDesign['secondary'])),
+                        title: Text('List',
+                            style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: HexColor(ColorsDesign['secondary']))),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      ListTile(
+                        leading: Icon(Feather.folder,
+                            color: HexColor(ColorsDesign['secondary'])),
+                        title: Text('Folder',
+                            style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: HexColor(ColorsDesign['secondary']))),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      ListTile(
+                        leading: Icon(Feather.message_square,
+                            color: HexColor(ColorsDesign['secondary'])),
+                        title: Text('Message',
+                            style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: HexColor(ColorsDesign['secondary']))),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                      ),
+                      SizedBox(height: 10),
+                      ListTile(
+                        leading: Icon(Feather.log_out,
+                            color: HexColor(ColorsDesign['secondary'])),
+                        title: Text('Logout',
+                            style: TextStyle(
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                color: HexColor(ColorsDesign['secondary']))),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/');
+                        },
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             )
           : null,
@@ -129,16 +172,14 @@ class _HomeState extends State<Home> {
                     Dashboard()
                   ],
                 )
-              : Dashboard()
-          // Stack(
-          //     children: [
-          //       //sidebar
-          //       // MediaQuery.of(context).size.width > 750 ? NavigationBar() : null,
-          //       //dashboard
-          //       Dashboard()
-          //     ],
-          //   )
-          ),
+              : Stack(
+                  children: [
+                    //sidebar
+                    // NavigationBar(),
+                    //dashboard
+                    Dashboard()
+                  ],
+                )),
     );
   }
 }
