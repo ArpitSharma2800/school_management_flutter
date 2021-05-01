@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_management/components/dashboard/contentCard.dart';
 // import 'package:hexcolor/hexcolor.dart';
 // import 'package:school_management/theme/colors.dart';
 
@@ -15,14 +16,9 @@ class Dashboard extends StatelessWidget {
               ? MediaQuery.of(context).size.width * 0.83
               : MediaQuery.of(context).size.width,
           child: GridView.count(
-            crossAxisCount: 4,
+            crossAxisCount: MediaQuery.of(context).size.width > 550 ? 4 : 2,
             children: List.generate(100, (index) {
-              return Center(
-                child: Text(
-                  'Item $index',
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-              );
+              return Center(child: ContentCard());
             }),
           ),
         ));
