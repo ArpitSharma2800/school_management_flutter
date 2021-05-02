@@ -2,19 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/components/Navigation/NavigationBar.dart';
 import 'package:school_management/components/dashboard/dashboard.dart';
-import 'package:school_management/components/home/src/schoolCard.dart';
+// import 'package:school_management/components/home/src/schoolCard.dart';
 import 'package:school_management/theme/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-
-const dummy = [
-  {'name': "School Bus Fees", 'id': 0},
-  {'name': "School Bus Fees", 'id': 1},
-  {'name': "School Bus Fees", 'id': 2},
-  {'name': "School Bus Fees", 'id': 3},
-  {'name': "School Bus Fees", 'id': 4},
-  {'name': "School Bus Fees", 'id': 5},
-];
 
 class Home extends StatefulWidget {
   final String page;
@@ -29,7 +20,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: HexColor(ColorsDesign['primary']),
+      backgroundColor: HexColor(ColorsDesign['fourth']).withOpacity(0.1),
       appBar: AppBar(
         elevation: 0,
         title: Text(
@@ -161,6 +152,7 @@ class _HomeState extends State<Home> {
             )
           : null,
       body: Container(
+          // color: HexColor(ColorsDesign['primary']),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: MediaQuery.of(context).size.width > 850
