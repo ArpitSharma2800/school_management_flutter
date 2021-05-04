@@ -88,14 +88,14 @@ class _ContentCardState extends State<ContentCard> {
                       height: hovered ? 40 : 40,
                       width: hovered ? 150.0 : 145.0,
                       child: Center(
-                        child: Text(
-                          "Proceed",
-                          style: TextStyle(
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.bold,
-                              color: hovered
-                                  ? HexColor(ColorsDesign['fifth'])
-                                  : HexColor(ColorsDesign['third'])),
+                        child: FaIcon(
+                          hovered
+                              ? FontAwesomeIcons.arrowRight
+                              : FontAwesomeIcons.arrowCircleRight,
+                          color: hovered
+                              ? HexColor(ColorsDesign['fifth'])
+                              : HexColor(ColorsDesign['third']),
+                          size: 28.0,
                         ),
                       ),
                       decoration: BoxDecoration(

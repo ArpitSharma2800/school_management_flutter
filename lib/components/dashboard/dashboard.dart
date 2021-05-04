@@ -46,4 +46,16 @@ const dummy = [
     'route': "/tutionfees",
     'icon': FontAwesomeIcons.bookReader
   },
+  {
+    'name': "Staff Attendance",
+    'id': 3,
+    'route': "/staffattendance",
+    'icon': FontAwesomeIcons.windowRestore
+  },
+  {
+    'name': "Student Attendance",
+    'id': 4,
+    'route': "/studentattendance",
+    'icon': FontAwesomeIcons.clipboardList
+  },
 ];
