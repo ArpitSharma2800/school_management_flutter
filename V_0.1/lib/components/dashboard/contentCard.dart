@@ -39,7 +39,8 @@ class _ContentCardState extends State<ContentCard> {
             height: 230,
             width: 230,
             child: Card(
-              color: HexColor(ColorsDesign['fourth']).withOpacity(0.1),
+              color: Colors.transparent,
+              // color: HexColor(ColorsDesign['fourth']).withOpacity(0.1),
               shape: BeveledRectangleBorder(
                 borderRadius: BorderRadius.circular(8.0),
               ),
@@ -71,12 +72,15 @@ class _ContentCardState extends State<ContentCard> {
                   ),
                   AnimatedContainer(
                       duration: Duration(milliseconds: 275),
-                      child: Text(
-                        widget.name,
-                        style: TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.bold,
-                            color: HexColor(ColorsDesign['third'])),
+                      child: Center(
+                        child: Text(
+                          widget.name,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                              color: HexColor(ColorsDesign['third'])),
+                        ),
                       )),
                   GestureDetector(
                     onTap: () {

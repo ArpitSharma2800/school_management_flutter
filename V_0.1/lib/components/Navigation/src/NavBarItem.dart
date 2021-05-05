@@ -27,8 +27,8 @@ class _NavBarItemState extends State<NavBarItem> {
           // print(widget.icon);
           widget.touched();
         },
-        splashColor: HexColor(ColorsDesign['secondary']),
-        hoverColor: HexColor(ColorsDesign['secondary']),
+        splashColor: HexColor(ColorsDesign['fourth']).withOpacity(0.1),
+        hoverColor: HexColor(ColorsDesign['fourth']).withOpacity(0.1),
         child: Container(
           child: Container(
             height: 60.0,
