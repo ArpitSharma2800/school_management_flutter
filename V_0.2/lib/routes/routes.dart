@@ -1,5 +1,5 @@
 import 'package:fluro/fluro.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:school_management/components/home/home.dart';
 import 'package:school_management/components/login/login.dart';
 
