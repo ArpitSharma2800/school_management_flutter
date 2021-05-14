@@ -1,4 +1,4 @@
-# school_management_v2
+# school_management
 
 A new Flutter project.
 
