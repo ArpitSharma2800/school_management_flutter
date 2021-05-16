@@ -131,7 +131,7 @@ class _LoginFormDesktopState extends State<LoginFormDesktop> {
             height: ht(context) * 2,
           ),
           RoundedLoadingButton(
-            width: wt(context) * 10,
+            width: wt(context) * 15,
             child: Text('Login!', style: TextStyle(color: Colors.white)),
             color: HexColor(ColorsDesign['yellow']),
             successColor: HexColor(ColorsDesign['green']),
