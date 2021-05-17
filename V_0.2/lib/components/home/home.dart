@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:school_management/components/home/src/drawer.dart';
 import 'package:school_management/theme/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/Responsive/layout.dart';
 import 'package:school_management/Responsive/responsive.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+// import '../../Responsive/layout.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -18,18 +22,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: HexColor(ColorsDesign['green']).withOpacity(0.1),
+        backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_forward_ios),
-          onPressed: () {
-            _scaffoldKey.currentState.openDrawer();
-          },
-          tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-        ),
-        iconTheme: IconThemeData(color: HexColor(ColorsDesign['yellow'])),
+        iconTheme: IconThemeData(color: Colors.black),
         title: Responsive(
           desktop: Text(
             "SchoolName",
@@ -57,39 +55,40 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text('Drawer Header'),
+      drawer: Container(
+        color: HexColor(ColorsDesign['yellow']),
+        child: Drawer(
+          elevation: 0,
+
+          // Add a ListView to the drawer. This ensures the user can scroll
+          // through the options in the drawer if there isn't enough vertical
+          // space to fit everything.
+          child: Container(
+            color: HexColor(ColorsDesign['lgreen']),
+            child: ListView(
+              children: <Widget>[
+                SizedBox(
+                  height: ht(context) * 10,
+                ),
+                DrawerTile(
+                  icon: FontAwesomeIcons.users,
+                  name: "Staff Attendance",
+                ),
+                DrawerTile(
+                  icon: FontAwesomeIcons.bus,
+                  name: "Bus Fees",
+                ),
+                DrawerTile(
+                  icon: FontAwesomeIcons.userGraduate,
+                  name: "Pupil Attendance",
+                ),
+                DrawerTile(
+                  icon: FontAwesomeIcons.poll,
+                  name: "Results",
+                ),
+              ],
             ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
+          ),
         ),
       ),
       body: Text("efef"),
