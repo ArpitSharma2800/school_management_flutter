@@ -4,5 +4,6 @@ const ColorsDesign = {
   "yellow": '#FFB001',
   "lgreen": '#E9FFEC',
   "lred": '#FFEFF1',
-  "lyellow": '#FFF9DA'
+  "lyellow": '#FFF9DA',
+  "blue": '#4285F4'
 };

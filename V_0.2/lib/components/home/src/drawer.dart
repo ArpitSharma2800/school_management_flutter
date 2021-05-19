@@ -9,9 +9,11 @@ import 'package:google_fonts/google_fonts.dart';
 class DrawerTile extends StatefulWidget {
   final String name;
   final IconData icon;
+  final bool route;
   DrawerTile({
     @required this.name,
     @required this.icon,
+    @required this.route,
   });
 
   @override
@@ -22,40 +24,35 @@ class _DrawerTileState extends State<DrawerTile> {
   bool hovered = false;
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (value) {
-        setState(() {
-          hovered = true;
-        });
-      },
-      onExit: (value) {
-        setState(() {
-          hovered = false;
-        });
-      },
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 275),
-        padding:
-            EdgeInsets.fromLTRB(wt(context) * 0.5, 0, wt(context) * 0.5, 0),
-        height: ht(context) * 10,
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 275),
+      padding: EdgeInsets.fromLTRB(wt(context) * 0.5, 0, wt(context) * 0.5, 0),
+      height: ht(context) * 10,
+      child: InkWell(
+        onTap: () {
+          print("Gr");
+        },
         child: Card(
           elevation: 0,
-          color: hovered
-              ? HexColor(ColorsDesign['green']).withOpacity(0.8)
+          color: widget.route
+              ? HexColor(ColorsDesign['blue']).withOpacity(0.8)
               : Colors.white,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ListTile(
-                leading: FaIcon(widget.icon),
+                leading: FaIcon(
+                  widget.icon,
+                  color: widget.route ? Colors.white : Colors.black,
+                ),
                 title: Text(
                   widget.name,
                   style: GoogleFonts.quicksand(
                       textStyle: TextStyle(
                           fontWeight: FontWeight.w600,
-                          color: Colors.black,
-                          fontSize: ht(context) * 2)),
+                          color: widget.route ? Colors.white : Colors.black,
+                          fontSize: ht(context) * 1.5)),
                 ),
               ),
             ],
