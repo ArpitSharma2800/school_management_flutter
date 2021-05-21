@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:school_management/components/busFees/bus.dart';
 import 'package:school_management/components/home/home.dart';
 import 'package:school_management/components/login/login.dart';
 
@@ -14,10 +15,17 @@ class FRouter {
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           Home());
 
+  static Handler _busHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          Bus());
+
   static void setupRouter() {
     router.define("/", handler: _loginHandler);
 
-    router.define("/main/",
+    router.define("/main",
         handler: _homeHandler, transitionType: TransitionType.fadeIn);
+
+    router.define("/bus",
+        handler: _busHandler, transitionType: TransitionType.fadeIn);
   }
 }

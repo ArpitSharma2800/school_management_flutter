@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:school_management/components/home/src/drawer.dart';
 import 'package:school_management/theme/colors.dart';
@@ -7,7 +9,7 @@ import 'package:school_management/Responsive/layout.dart';
 import 'package:school_management/Responsive/responsive.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
-// import '../../Responsive/layout.dart';
+import 'package:flutter_conditional_rendering/flutter_conditional_rendering.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -23,6 +25,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('kk:mm \nEEE d MMM').format(now);
+    String currentRoute = ModalRoute.of(context).settings.name;
+
     return Scaffold(
       backgroundColor: Colors.white,
       key: _scaffoldKey,
@@ -102,41 +106,113 @@ class _HomeState extends State<Home> {
                 DrawerTile(
                   icon: FontAwesomeIcons.home,
                   name: "Home",
-                  route: ModalRoute.of(context).settings.name == '/main/'
-                      ? true
-                      : false,
+                  route: currentRoute == '/main' ? true : false,
+                  touched: () {
+                    Timer(Duration(milliseconds: 100), () {
+                      Navigator.pushReplacementNamed(context, '/main');
+                    });
+                  },
                 ),
                 DrawerTile(
                   icon: FontAwesomeIcons.users,
                   name: "Staff Attendance",
                   route: false,
+                  touched: () {
+                    Timer(Duration(milliseconds: 100), () {
+                      Navigator.pushReplacementNamed(context, '/main');
+                    });
+                  },
                 ),
                 DrawerTile(
                   icon: FontAwesomeIcons.bus,
                   name: "Bus Fees",
-                  route: false,
+                  route: currentRoute == '/bus' ? true : false,
+                  touched: () {
+                    Timer(Duration(milliseconds: 100), () {
+                      Navigator.pushReplacementNamed(context, '/bus');
+                    });
+                  },
                 ),
                 DrawerTile(
                   icon: FontAwesomeIcons.userGraduate,
                   name: "Pupil Attendance",
                   route: false,
+                  touched: () {
+                    Timer(Duration(milliseconds: 100), () {
+                      Navigator.pushReplacementNamed(context, '/main');
+                    });
+                  },
                 ),
                 DrawerTile(
                   icon: FontAwesomeIcons.poll,
                   name: "Results",
                   route: false,
+                  touched: () {
+                    Timer(Duration(milliseconds: 100), () {
+                      Navigator.pushReplacementNamed(context, '/main');
+                    });
+                  },
                 ),
                 DrawerTile(
                   icon: FontAwesomeIcons.solidArrowAltCircleLeft,
                   name: "Logout",
                   route: false,
+                  touched: () {
+                    Timer(Duration(milliseconds: 100), () {
+                      Navigator.pushReplacementNamed(context, '/main');
+                    });
+                  },
                 ),
               ],
             ),
           ),
         ),
       ),
-      body: Text("efef"),
+      body: ConditionalSwitch.single<String>(
+          context: context,
+          valueBuilder: (BuildContext context) => currentRoute,
+          caseBuilders: {
+            '/main': (BuildContext context) => Text('The value is A!'),
+            '/fes': (BuildContext context) => Text('The value is B!'),
+          },
+          fallbackBuilder: (BuildContext context) => CenterText()),
     );
+  }
+}
+
+class CenterText extends StatelessWidget {
+  const CenterText({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Responsive(
+      desktop: Text(
+        "SchoolName",
+        style: GoogleFonts.quicksand(
+            textStyle: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+                fontSize: wt(context) * 2)),
+      ),
+      mobile: Text(
+        "SchoolName",
+        style: GoogleFonts.quicksand(
+            textStyle: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+                fontSize: wt(context) * 5)),
+      ),
+      tablet: Text(
+        "SchoolName",
+        style: GoogleFonts.quicksand(
+            textStyle: TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+                fontSize: wt(context) * 4)),
+      ),
+    ));
   }
 }

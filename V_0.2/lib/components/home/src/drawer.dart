@@ -10,10 +10,12 @@ class DrawerTile extends StatefulWidget {
   final String name;
   final IconData icon;
   final bool route;
+  final Function touched;
   DrawerTile({
     @required this.name,
     @required this.icon,
     @required this.route,
+    @required this.touched,
   });
 
   @override
@@ -30,7 +32,7 @@ class _DrawerTileState extends State<DrawerTile> {
       height: ht(context) * 10,
       child: InkWell(
         onTap: () {
-          print("Gr");
+          widget.touched();
         },
         child: Card(
           elevation: 0,
