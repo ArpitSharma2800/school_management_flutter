@@ -10,12 +10,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/theme/colors.dart';
+import 'package:json_table/json_table.dart';
 
 class Bus extends StatefulWidget {
   Bus({Key key}) : super(key: key);
 
   @override
   _BusState createState() => _BusState();
+}
+
+String eligibleToVote(value) {
+  if (value >= 18) {
+    return "Yes";
+  } else
+    return "No";
 }
 
 class _BusState extends State<Bus> {
@@ -29,6 +37,15 @@ class _BusState extends State<Bus> {
       _btnController.success();
     });
   }
+
+  var columns = [
+    JsonTableColumn("name", label: "Name"),
+    JsonTableColumn("age", label: "Age"),
+    JsonTableColumn("DOB", label: "Date of Birth"),
+    JsonTableColumn("age",
+        label: "Eligible to Vote", valueBuilder: eligibleToVote),
+    JsonTableColumn("email", label: "E-mail", defaultValue: "NA"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +62,7 @@ class _BusState extends State<Bus> {
             children: [
               Positioned(
                 left: 0.0,
+                //form starts
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -118,50 +136,24 @@ class _BusState extends State<Bus> {
                           },
                         ),
                       ),
-                      SizedBox(
-                        height: ht(context) * 2,
-                      ),
-                      Container(
-                        width: wt(context) * 100,
-                        child: DataTable(
-                          columns: const <DataColumn>[
-                            DataColumn(
-                              label: Text(
-                                'Name',
-                                style: TextStyle(fontStyle: FontStyle.italic),
-                              ),
-                            ),
-                            DataColumn(
-                              label: Text(
-                                'Age',
-                                style: TextStyle(fontStyle: FontStyle.italic),
-                              ),
-                            ),
-                            DataColumn(
-                              label: Text('Role',
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                  )),
-                            ),
-                          ],
-                          rows: data
-                              .map((e) => DataRow(
-                                    cells: <DataCell>[
-                                      DataCell(Text(e['name'],
-                                          style: TextStyle(
-                                            fontSize: 24,
-                                          ))),
-                                      DataCell(Text(e['age'].toString())),
-                                      DataCell(Text(e['role'])),
-                                    ],
-                                  ))
-                              .toList(),
-                        ),
-                      )
                     ],
                   ),
                 ),
-              )
+                //forms ends
+
+                //databasle start here
+              ),
+              Positioned(
+                  top: 150,
+                  child: Container(
+                      w
+                      child: JsonTable(data,
+                          allowRowHighlight: true,
+                          rowHighlightColor: Colors.yellow[500]
+                              .withOpacity(0.7), onRowSelect: (index, map) {
+                        print(index);
+                        print(map);
+                      }, columns: columns)))
             ],
           ),
         ));
@@ -169,12 +161,13 @@ class _BusState extends State<Bus> {
 }
 
 const data = [
-  {"name": "arpit", "age": 21, "role": "admin"},
-  {"name": "arpit2", "age": 22, "role": "admin"},
-  {"name": "arpit3", "age": 23, "role": "admin"},
-  {"name": "arpit4", "age": 24, "role": "admin"},
-  {"name": "arpit5", "age": 25, "role": "admin"},
-  {"name": "arpit6", "age": 26, "role": "admin"},
-  {"name": "arpit7", "age": 27, "role": "admin"},
-  {"name": "arpit8", "age": 28, "role": "admin"},
+  {"name": "Ram", "email": "ram@gmail.com", "age": 23, "DOB": "1990-12-01"},
+  {
+    "name": "Shyam",
+    "email": "shyam23@gmail.com",
+    "age": 18,
+    "DOB": "1995-07-01"
+  },
+  {"name": "John", "email": "john@gmail.com", "age": 10, "DOB": "2000-02-24"},
+  {"name": "Ram", "age": 12, "DOB": "2000-02-01"}
 ];
