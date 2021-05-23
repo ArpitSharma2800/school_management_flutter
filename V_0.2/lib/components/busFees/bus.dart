@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:school_management/Responsive/layout.dart';
+import 'package:school_management/components/busFees/src/pupilDetails.dart';
 import 'package:school_management/stylingComponents/appbar.dart';
 import 'package:school_management/stylingComponents/drawer/drawer.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,20 +11,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/theme/colors.dart';
-import 'package:json_table/json_table.dart';
+import 'package:expansion_card/expansion_card.dart';
 
 class Bus extends StatefulWidget {
   Bus({Key key}) : super(key: key);
 
   @override
   _BusState createState() => _BusState();
-}
-
-String eligibleToVote(value) {
-  if (value >= 18) {
-    return "Yes";
-  } else
-    return "No";
 }
 
 class _BusState extends State<Bus> {
@@ -37,15 +31,6 @@ class _BusState extends State<Bus> {
       _btnController.success();
     });
   }
-
-  var columns = [
-    JsonTableColumn("name", label: "Name"),
-    JsonTableColumn("age", label: "Age"),
-    JsonTableColumn("DOB", label: "Date of Birth"),
-    JsonTableColumn("age",
-        label: "Eligible to Vote", valueBuilder: eligibleToVote),
-    JsonTableColumn("email", label: "E-mail", defaultValue: "NA"),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +58,7 @@ class _BusState extends State<Bus> {
                         width: MediaQuery.of(context).size.width >= 1100
                             ? wt(context) * 22
                             : MediaQuery.of(context).size.width < 650
-                                ? wt(context) * 100
+                                ? wt(context) * 96
                                 : wt(context) * 35,
                         child: TextFormField(
                           inputFormatters: <TextInputFormatter>[
@@ -121,7 +106,16 @@ class _BusState extends State<Bus> {
                       ),
                       Container(
                         child: RoundedLoadingButton(
-                          width: wt(context) * 10,
+                          width: MediaQuery.of(context).size.width >= 1100
+                              ? wt(context) * 10
+                              : MediaQuery.of(context).size.width < 650
+                                  ? wt(context) * 32
+                                  : wt(context) * 18,
+                          height: MediaQuery.of(context).size.width >= 1100
+                              ? ht(context) * 5
+                              : MediaQuery.of(context).size.width < 650
+                                  ? ht(context) * 5
+                                  : ht(context) * 4,
                           child: Text('Submit',
                               style: TextStyle(color: Colors.white)),
                           color: HexColor(ColorsDesign['yellow']),
@@ -143,17 +137,60 @@ class _BusState extends State<Bus> {
 
                 //databasle start here
               ),
+              Positioned(top: 140, child: PupilDetails()),
               Positioned(
-                  top: 150,
+                  top: 270,
                   child: Container(
-                      w
-                      child: JsonTable(data,
-                          allowRowHighlight: true,
-                          rowHighlightColor: Colors.yellow[500]
-                              .withOpacity(0.7), onRowSelect: (index, map) {
-                        print(index);
-                        print(map);
-                      }, columns: columns)))
+                    width: wt(context) * 95,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 50,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Card(
+                              child: ListTile(
+                                leading: FaIcon(
+                                  FontAwesomeIcons.timesCircle,
+                                  color: HexColor(ColorsDesign['red']),
+                                ),
+                                title: Text(
+                                  "Month : May",
+                                  style: GoogleFonts.quicksand(
+                                      textStyle: TextStyle(
+                                          // fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                          fontSize: ht(context) * 2.5)),
+                                ),
+                                subtitle: Text('Fees to be paid ₹500'),
+                                trailing: Icon(Icons.more_vert),
+                                isThreeLine: true,
+                              ),
+                            ),
+                            Card(
+                              child: ListTile(
+                                leading: FaIcon(
+                                  FontAwesomeIcons.timesCircle,
+                                  color: HexColor(ColorsDesign['red']),
+                                ),
+                                title: Text(
+                                  "Month : June",
+                                  style: GoogleFonts.quicksand(
+                                      textStyle: TextStyle(
+                                          // fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                          fontSize: ht(context) * 2.5)),
+                                ),
+                                subtitle: Text('Fees to be paid ₹500'),
+                                trailing: Icon(Icons.more_vert),
+                                isThreeLine: true,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  )),
             ],
           ),
         ));

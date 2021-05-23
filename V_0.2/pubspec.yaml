@@ -48,6 +48,7 @@ dependencies:
   hexcolor: ^2.0.3
   rounded_loading_button: ^2.0.3
   flutter_conditional_rendering: ^2.0.0
+  expansion_card: ^0.1.0
 
 
 dev_dependencies:
