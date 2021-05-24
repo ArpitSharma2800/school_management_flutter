@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:school_management/Responsive/layout.dart';
+import 'package:school_management/components/busFees/src/paymentList.dart';
 import 'package:school_management/components/busFees/src/pupilDetails.dart';
 import 'package:school_management/stylingComponents/appbar.dart';
 import 'package:school_management/stylingComponents/drawer/drawer.dart';
@@ -25,6 +26,7 @@ class _BusState extends State<Bus> {
   final myControllerEmail = TextEditingController();
   final RoundedLoadingButtonController _btnController =
       RoundedLoadingButtonController();
+  String payment = "Paid";
 
   void _doSomething() async {
     Timer(Duration(seconds: 2), () {
@@ -105,31 +107,41 @@ class _BusState extends State<Bus> {
                     SizedBox(
                       height: ht(context) * 2,
                     ),
-                    SizedBox(
-                      child: RoundedLoadingButton(
-                        width: MediaQuery.of(context).size.width >= 1100
-                            ? wt(context) * 10
-                            : MediaQuery.of(context).size.width < 650
-                                ? wt(context) * 32
-                                : wt(context) * 18,
-                        height: MediaQuery.of(context).size.width >= 1100
-                            ? ht(context) * 5
-                            : MediaQuery.of(context).size.width < 650
-                                ? ht(context) * 5
-                                : ht(context) * 4,
-                        child: Text('Submit',
-                            style: TextStyle(color: Colors.white)),
-                        color: HexColor(ColorsDesign['yellow']),
-                        successColor: HexColor(ColorsDesign['green']),
-                        controller: _btnController,
-                        onPressed: () {
-                          if (_formKey.currentState.validate()) {
-                            _doSomething();
-                          } else {
-                            _btnController.reset();
-                          }
-                        },
+                    Container(
+                      width: MediaQuery.of(context).size.width >= 1100
+                          ? wt(context) * 10
+                          : MediaQuery.of(context).size.width < 650
+                              ? wt(context) * 32
+                              : wt(context) * 18,
+                      height: MediaQuery.of(context).size.width >= 1100
+                          ? ht(context) * 5
+                          : MediaQuery.of(context).size.width < 650
+                              ? ht(context) * 5
+                              : ht(context) * 4,
+                      decoration: BoxDecoration(
+                          color: HexColor(ColorsDesign['yellow']),
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black12,
+                              blurRadius: 20.0,
+                              spreadRadius: 5.0,
+                            ),
+                          ]),
+                      child: Center(
+                        child: Text(
+                          "Search",
+                          style: GoogleFonts.quicksand(
+                              textStyle: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            // fontSize: wt(context) * 1
+                          )),
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      height: ht(context) * 2,
                     ),
                   ],
                 ),
@@ -140,33 +152,14 @@ class _BusState extends State<Bus> {
               ),
               Expanded(
                 child: Container(
-                  width: wt(context) * 95,
+                  width: wt(context) * 100,
                   child: ListView.builder(
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemCount: 50,
                     itemBuilder: (context, index) {
-                      return Card(
-                        child: ListTile(
-                          leading: FaIcon(
-                            FontAwesomeIcons.timesCircle,
-                            color: HexColor(ColorsDesign['red']),
-                            size: 50,
-                          ),
-                          title: Text(
-                            "Month : May",
-                            style: GoogleFonts.quicksand(
-                                textStyle: TextStyle(
-                                    // fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                    fontSize: ht(context) * 2.5)),
-                          ),
-                          subtitle: Text('Fees to be paid ₹500'),
-                          trailing: Icon(Icons.more_vert),
-                          isThreeLine: false,
-                        ),
-                      );
+                      return PaymentList(payment: payment);
                     },
                   ),
                 ),
