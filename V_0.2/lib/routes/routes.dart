@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:school_management/components/busFees/bus.dart';
 import 'package:school_management/components/home/home.dart';
 import 'package:school_management/components/login/login.dart';
+import 'package:school_management/components/staffAttendance/staffAttendance.dart';
 
 class FRouter {
   static final FluroRouter router = FluroRouter();
@@ -19,6 +20,10 @@ class FRouter {
       handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
           Bus());
 
+  static Handler _staffHandler = Handler(
+      handlerFunc: (BuildContext context, Map<String, dynamic> params) =>
+          StaffAttendance());
+
   static void setupRouter() {
     router.define("/", handler: _loginHandler);
 
@@ -27,5 +32,8 @@ class FRouter {
 
     router.define("/bus",
         handler: _busHandler, transitionType: TransitionType.fadeIn);
+
+    router.define("/staffattendance",
+        handler: _staffHandler, transitionType: TransitionType.fadeIn);
   }
 }

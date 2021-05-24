@@ -157,7 +157,7 @@ class _BusState extends State<Bus> {
                     physics: BouncingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    itemCount: 50,
+                    itemCount: 10,
                     itemBuilder: (context, index) {
                       return PaymentList(payment: payment);
                     },

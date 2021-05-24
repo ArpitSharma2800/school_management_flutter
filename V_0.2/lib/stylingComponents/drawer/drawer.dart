@@ -60,10 +60,10 @@ class SchoolDrawer extends StatelessWidget {
             DrawerTile(
               icon: FontAwesomeIcons.users,
               name: "Staff Attendance",
-              route: false,
+              route: currentRoute == '/staffattendance' ? true : false,
               touched: () {
                 Timer(Duration(milliseconds: 100), () {
-                  Navigator.pushReplacementNamed(context, '/main');
+                  Navigator.pushReplacementNamed(context, '/staffattendance');
                 });
               },
             ),
