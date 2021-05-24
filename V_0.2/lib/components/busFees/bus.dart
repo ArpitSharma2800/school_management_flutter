@@ -12,7 +12,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/theme/colors.dart';
-import 'package:expansion_card/expansion_card.dart';
 
 class Bus extends StatefulWidget {
   Bus({Key key}) : super(key: key);
@@ -27,12 +26,6 @@ class _BusState extends State<Bus> {
   final RoundedLoadingButtonController _btnController =
       RoundedLoadingButtonController();
   String payment = "Paid";
-
-  void _doSomething() async {
-    Timer(Duration(seconds: 2), () {
-      _btnController.success();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +142,60 @@ class _BusState extends State<Bus> {
               Container(child: PupilDetails()),
               SizedBox(
                 height: 10,
+              ),
+              Card(
+                elevation: 0,
+                child: ListTile(
+                  leading: FaIcon(
+                    FontAwesomeIcons.calendarCheck,
+                    color: HexColor(ColorsDesign['yellow']),
+                    size: 45,
+                  ),
+                  title: Row(children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        "Month",
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.quicksand(
+                            textStyle: TextStyle(
+                                // fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                                fontSize: ht(context) * 2.5)),
+                      ),
+                    ),
+                    Expanded(
+                        child: Text(
+                      "Fees",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: ht(context) * 2.5)),
+                    )),
+                    Expanded(
+                        child: Text(
+                      "Etc",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: ht(context) * 2.5)),
+                    )),
+                    Expanded(
+                        child: Text(
+                      "Payment",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: ht(context) * 2.5)),
+                    )),
+                  ]),
+                  isThreeLine: false,
+                ),
               ),
               Expanded(
                 child: Container(
