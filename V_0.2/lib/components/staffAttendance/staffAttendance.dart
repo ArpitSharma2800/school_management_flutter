@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/Responsive/layout.dart';
 import 'package:school_management/Responsive/responsive.dart';
+import 'package:school_management/components/busFees/bus.dart';
+import 'package:school_management/components/staffAttendance/src/markAttendance.dart';
 import 'package:school_management/stylingComponents/appbar.dart';
 import 'package:school_management/stylingComponents/drawer/drawer.dart';
 import 'package:school_management/theme/colors.dart';
@@ -25,15 +27,17 @@ class _StaffAttendanceState extends State<StaffAttendance> {
           elevation: 0,
           iconTheme: IconThemeData(color: Colors.black),
           bottom: TabBar(
-            labelColor: HexColor(ColorsDesign['blue']),
+            labelColor: HexColor(ColorsDesign['green']),
+            indicatorSize: TabBarIndicatorSize.label,
             unselectedLabelColor: Colors.black,
-            indicatorColor: HexColor(ColorsDesign['blue']),
             labelStyle: TextStyle(
-                fontSize: 22.0, fontFamily: 'quicksand'), //For Selected tab
+                fontSize: ht(context) * 2,
+                fontFamily: 'quicksand'), //For Selected tab
             unselectedLabelStyle:
-                TextStyle(fontSize: 22.0, fontFamily: 'quicksand'),
-            indicator:
-                UnderlineTabIndicator(borderSide: BorderSide(width: 4.0)),
+                TextStyle(fontSize: ht(context) * 2, fontFamily: 'quicksand'),
+            indicator: UnderlineTabIndicator(
+                borderSide: BorderSide(
+                    color: HexColor(ColorsDesign['green']), width: 5.0)),
             tabs: [
               Tab(
                 text: "Mark Attendance",
@@ -71,6 +75,12 @@ class _StaffAttendanceState extends State<StaffAttendance> {
           ),
         ),
         drawer: SchoolDrawer(),
+        body: TabBarView(
+          children: [
+            MarkAttendance(),
+            Icon(Icons.directions_transit),
+          ],
+        ),
       ),
     );
   }

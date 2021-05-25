@@ -1,7 +1,7 @@
 const ColorsDesign = {
-  "green": '#43C466',
+  "green": '#0F9D58',
   "red": '#FF6363',
-  "yellow": '#FFB001',
+  "yellow": '#F4B400',
   "lgreen": '#E9FFEC',
   "lred": '#FFEFF1',
   "lyellow": '#FFF9DA',

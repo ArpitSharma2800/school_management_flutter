@@ -23,8 +23,6 @@ class Bus extends StatefulWidget {
 class _BusState extends State<Bus> {
   final _formKey = GlobalKey<FormState>();
   final myControllerEmail = TextEditingController();
-  final RoundedLoadingButtonController _btnController =
-      RoundedLoadingButtonController();
   String payment = "Paid";
 
   @override
@@ -38,8 +36,8 @@ class _BusState extends State<Bus> {
               left: wt(context) * 2,
               right: wt(context) * 2,
               top: wt(context) * 2),
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+          height: ht(context) * 100,
+          width: wt(context) * 100,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
