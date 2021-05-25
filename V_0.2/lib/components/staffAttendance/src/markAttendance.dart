@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/Responsive/layout.dart';
+import 'package:school_management/components/staffAttendance/src/markAttendanceList.dart';
 import 'package:school_management/theme/colors.dart';
 
 class MarkAttendance extends StatefulWidget {
@@ -97,6 +98,90 @@ class _MarkAttendanceState extends State<MarkAttendance> {
                     fontWeight: FontWeight.bold,
                     // fontSize: wt(context) * 1
                   )),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Card(
+              elevation: 0,
+              child: ListTile(
+                // leading: FaIcon(
+                //   FontAwesomeIcons.calendarCheck,
+                //   color: HexColor(ColorsDesign['yellow']),
+                //   size: 45,
+                // ),
+                title: Row(children: <Widget>[
+                  Expanded(
+                    child: Text(
+                      "Teacher's Id",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: ht(context) * 2.5)),
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      "Teacher's Name",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.quicksand(
+                          textStyle: TextStyle(
+                              // fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: ht(context) * 2.5)),
+                    ),
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Date",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(
+                        textStyle: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: ht(context) * 2.5)),
+                  )),
+                  Expanded(
+                      child: Text(
+                    "Mark",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(
+                        textStyle: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: ht(context) * 2.5)),
+                  )),
+                  Expanded(
+                      child: Text(
+                    "Undo",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(
+                        textStyle: TextStyle(
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                            fontSize: ht(context) * 2.5)),
+                  )),
+                ]),
+                isThreeLine: false,
+              ),
+            ),
+            Expanded(
+              child: Container(
+                width: wt(context) * 100,
+                child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return MarkList(
+                      touchedMark: () {},
+                    );
+                  },
                 ),
               ),
             ),
