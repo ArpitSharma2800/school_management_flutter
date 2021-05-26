@@ -80,15 +80,9 @@ class _MarkAttendanceState extends State<MarkAttendance> {
                       ? ht(context) * 5
                       : ht(context) * 4,
               decoration: BoxDecoration(
-                  color: HexColor(ColorsDesign['yellow']),
-                  borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black12,
-                      blurRadius: 20.0,
-                      spreadRadius: 5.0,
-                    ),
-                  ]),
+                color: HexColor(ColorsDesign['yellow']),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
               child: Center(
                 child: Text(
                   "Submit",
