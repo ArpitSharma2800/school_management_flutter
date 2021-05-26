@@ -5,13 +5,20 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:school_management/Responsive/layout.dart';
 import 'package:school_management/theme/colors.dart';
 
-class MarkList extends StatelessWidget {
+class MarkList extends StatefulWidget {
   const MarkList({
     Key key,
     @required this.touchedMark,
   }) : super(key: key);
 
   final Function touchedMark;
+
+  @override
+  _MarkListState createState() => _MarkListState();
+}
+
+class _MarkListState extends State<MarkList> {
+  bool selected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -80,10 +87,21 @@ class MarkList extends StatelessWidget {
                           ? ht(context) * 5
                           : ht(context) * 4,
                   decoration: BoxDecoration(
-                    color: HexColor(ColorsDesign['blue']),
+                    color: selected
+                        ? HexColor(ColorsDesign['blue']).withOpacity(0.2)
+                        : HexColor(ColorsDesign['blue']),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: InkWell(
+                    onTap: () {
+                      selected == false
+                          ? setState(() {
+                              selected = true;
+                            })
+                          : setState(() {
+                              selected = selected;
+                            });
+                    },
                     child: Center(
                       child: Text(
                         "Absent",
@@ -118,18 +136,31 @@ class MarkList extends StatelessWidget {
                           ? ht(context) * 5
                           : ht(context) * 4,
                   decoration: BoxDecoration(
-                    color: HexColor(ColorsDesign['green']),
+                    color: selected
+                        ? HexColor(ColorsDesign['green'])
+                        : HexColor(ColorsDesign['green']).withOpacity(0.2),
                     borderRadius: BorderRadius.circular(20.0),
                   ),
-                  child: Center(
-                    child: Text(
-                      "undo",
-                      style: GoogleFonts.quicksand(
-                          textStyle: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        // fontSize: wt(context) * 1
-                      )),
+                  child: InkWell(
+                    onTap: () {
+                      selected == true
+                          ? setState(() {
+                              selected = false;
+                            })
+                          : setState(() {
+                              selected = selected;
+                            });
+                    },
+                    child: Center(
+                      child: Text(
+                        "undo",
+                        style: GoogleFonts.quicksand(
+                            textStyle: TextStyle(
+                          color: selected ? Colors.white : Colors.black,
+                          fontWeight: FontWeight.bold,
+                          // fontSize: wt(context) * 1
+                        )),
+                      ),
                     ),
                   ),
                 ),
